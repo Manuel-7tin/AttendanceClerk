@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Error 5XX</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 50px;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in-out forwards;
+        }
+        h1 {
+            font-size: 36px;
+            color: #e74c3c;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .gif-container {
+            margin: 20px 0;
+        }
+        .contact-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 15px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .contact-btn:hover {
+            background-color: #2980b9;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Oops! Server Error</h1>
+        <div class="gif-container">
+            <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExaWZ2eTJ0bmYxaTR0cDNxc2pxOTg0Y3c3ODdmYThod2Y4OWJjbXh1bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qaDbEDavgvKBs5jJc5/giphy.gif" alt="Oops GIF" width="350">
+        </div>
+        <p>Sorry, an error occurred in the server. You are seeing this page because Emmanuel was too "busy" to implement effective exception handling. He just hoped you won't ever run into an error. 🤦🏾‍♂️</p>
+        <p>Error message: {ERROR_MESSAGE}.</p>
+        <p>Please contact Emmanuel for further clarification.</p>
+        <a class="contact-btn" href="mailto:ebifredrick@gmail.com?subject=AttendanceClerk%20Help%20Request&body=Hello,%0A%0AI%20need%20assistance%20with%20the%20attendance%20tool.%20Here%20are%20the%20details%3A%0A%0A-%20Issue%3A%20%5Bbrief%20description%5D%0A-%20Steps%20to%20reproduce%3A%0A%0AThe%20two%20relevant%20files%20have%20been%20attached%20to%20this%20email.%0A%0AThanks,%0A[Your Name]">
+            📧 Contact Emmanuel
+        </a>
+<!--        <a class="contact-btn" href="https://www.linkedin.com/in/ebi-emmanuel/" target="_blank">Contact Emmanuel</a>-->
+    </div>
+</body>
+</html>
