@@ -563,7 +563,7 @@ col1, col2 = st.columns(2)
 with col1:
     excel_file = st.file_uploader("Upload Excel Workbook", type=["xlsx"], disabled=False)
 with col2:
-    csv_files = st.file_uploader("Upload an attendance list", type=["csv"], disabled=False, accept_multiple_files=True)
+    csv_files = st.file_uploader("Upload attendance lists", type=["csv"], disabled=False, accept_multiple_files=True)
 st.button(label="Submit files", disabled=st.session_state.file_submitted, on_click=main)
 
 # if csv_file:
