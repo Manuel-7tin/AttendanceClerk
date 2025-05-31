@@ -324,7 +324,7 @@ def main():
                     ]
                     # Add attendees that are not in the verified list
                     for name in not_found:
-                        if name in ['Teaching Materials', 'Ivy League Manager', "Admin"]:
+                        if name in ['Teaching Materials', 'Ivy League Manager', "Admin"] or "tutor" in name.lower():
                             # Skip non student attendees
                             continue
                         # Split name into surname first and other names next
@@ -530,7 +530,7 @@ def main():
                 st.session_state.info_class.add_info(paper,
                                     f"{attendees_num} people attended the {paper} class held on the {date.strftime("%dth of %B, year %Y")}")
                 st.session_state.info_class.add_info(paper,
-                                    f"{[man for man in not_found if man in ['Teaching Materials', 'Ivy League Manager', "Admin"]]} were left out of the marking.")
+                                    f"{[man for man in not_found if man in ['Teaching Materials', 'Ivy League Manager', "Admin"] or "tutor" in man.lower()]} were left out of the marking.")
             if st.session_state.stop:
                 st.error(f"❌ {paper} marking probably failed.")
             else:
