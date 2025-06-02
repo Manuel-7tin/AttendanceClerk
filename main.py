@@ -10,7 +10,7 @@ from datetime import datetime
 from openpyxl import load_workbook
 from streamlit_js_eval import streamlit_js_eval
 from openpyxl.utils import range_boundaries
-from openpyxl.styles import  Font, Alignment
+from openpyxl.styles import  Font, Alignment, Border, Side
 
 
 class Info:
@@ -213,7 +213,7 @@ def raise_error(e: str, error_type: int, action:str, stop: bool=True):
             html_err = f.read()
         html_err = html_err.replace("{ERROR_MESSAGE}", st.session_state.get("error_message", "An unknown error occurred."))
         # st.components.v1.html(html_err, scrolling=True, height=700)
-        st.session_state.info_class.add_error(action.split()[1], html_err)
+        st.session_state.info_class.add_error("raised", html_err)
     elif action[:3] == "log":
         print("logging")
         st.session_state.info_class.add_error(action.split(":")[1], e)
@@ -248,6 +248,7 @@ def main():
                                          header=None,
                                          nrows=8)
                 paper = class_info["Details"][1].split("(")[0].strip(" ")
+                paper = paper.split()[0] + " STANDARD" if "STANDARD" not in paper else paper
                 attendees_num = int(class_info["Details"][2])
                 day = class_info["Details"][3].split(",")[0]
                 date = datetime.strptime(day, "%m/%d/%y")
@@ -527,6 +528,15 @@ def main():
                         except Exception as e:
                             if raise_error(f"Error saving changes: {e}", 5, "raise"):
                                 continue
+                thin_border = Border(
+                    left=Side(style='thin'),
+                    right=Side(style='thin'),
+                    top=Side(style='thin'),
+                    bottom=Side(style='thin')
+                )
+                for row in ws.iter_rows(min_row=insert_at, max_row=rows_to_insert, min_col=1, max_col=ws.max_column):
+                    for cell in row:
+                        cell.border = thin_border
                 st.session_state.info_class.add_info(paper,
                                     f"{attendees_num} people attended the {paper} class held on the {date.strftime("%dth of %B, year %Y")}")
                 st.session_state.info_class.add_info(paper,
